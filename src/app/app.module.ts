@@ -4,15 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { BlueTextDirective } from './shared/blue-text.directive';
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, BlueTextDirective],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
