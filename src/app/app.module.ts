@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BlueTextDirective } from './shared/blue-text.directive';
+import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
+import { HelloWorldComponent } from './pages/hello-world/hello-world.component';
 
 @NgModule({
-  declarations: [AppComponent, BlueTextDirective],
+  declarations: [AppComponent, BlueTextDirective, LifeCycleComponent, HelloWorldComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
