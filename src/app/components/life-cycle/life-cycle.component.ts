@@ -1,21 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-life-cycle',
   templateUrl: './life-cycle.component.html',
   styleUrls: ['./life-cycle.component.scss'],
 })
-export class LifeCycleComponent implements OnInit {
+export class LifeCycleComponent
+  implements OnInit, OnChanges, DoCheck, OnDestroy {
   val: number = 0;
+  type: string = '';
 
   constructor() {
     console.log('constructor');
-    console.log('constructor: this.val', this.val);
+  }
+
+  ngOnChanges(): void {
+    console.log('ngOnChanges');
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
-    console.log('ngOnInit: this.val', this.val);
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
   }
 
   plus() {
@@ -25,4 +43,6 @@ export class LifeCycleComponent implements OnInit {
   abstract() {
     this.val -= 1;
   }
+
+  reset() {}
 }
