@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CounterComponent } from './counter/counter/counter.component';
-import { CounterOutputComponent } from './counter/counter-output/counter-output.component';
-import { CounterButtonsComponent } from './counter/counter-buttons/counter-buttons.component';
 
-import { BlueTextDirective } from './shared/blue-text.directive';
-import { counterReducer } from './counter/state/counter.reducer';
+import { SharedModule } from './shared/shared.module';
+import { CounterModule } from './pages/counter/counter.module';
+import { TextDirectiveModule } from './pages/text-directive/text-directive.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
+import { environment } from 'src/environments/environment';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CounterComponent,
-    CounterOutputComponent,
-    CounterButtonsComponent,
-
-    BlueTextDirective,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ counter: counterReducer }),
+    SharedModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      name: 'angular-rxjs',
+      logOnly: environment.production,
+    }),
+    CounterModule,
+    TextDirectiveModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
