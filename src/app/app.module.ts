@@ -10,6 +10,10 @@ import { CounterButtonsComponent } from './counter/counter-buttons/counter-butto
 
 import { BlueTextDirective } from './shared/blue-text.directive';
 import { counterReducer } from './counter/state/counter.reducer';
+import { PipeComponent } from './components/pipe/pipe.component';
+import { LifeCycleComponent } from './components/life-cycle/life-cycle/life-cycle.component';
+import { LifeCycleActionsComponent } from './components/life-cycle/life-cycle-actions/life-cycle-actions.component';
+import { LifeCycleOutputComponent } from './components/life-cycle/life-cycle-output/life-cycle-output.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,11 @@ import { counterReducer } from './counter/state/counter.reducer';
     CounterButtonsComponent,
 
     BlueTextDirective,
+
+    PipeComponent,
+     LifeCycleComponent,
+     LifeCycleActionsComponent,
+     LifeCycleOutputComponent,
   ],
   imports: [
     BrowserModule,
