@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private api: ApiService) {
     this.todos$ = this.api.get('/todos');
-    this.todos$.subscribe(console.log);
+    // this.todos$.subscribe(console.log);
   }
 
   ngOnInit(): void {}

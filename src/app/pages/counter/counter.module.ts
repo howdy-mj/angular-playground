@@ -6,6 +6,9 @@ import { CounterOutputComponent } from './components/counter-output/counter-outp
 import { CounterButtonsComponent } from './components/counter-buttons/counter-buttons.component';
 import { counterReducer } from 'src/app/store/counter/counter.reducer';
 import { StoreModule } from '@ngrx/store';
+import { CounterDataGuard } from './guard/counter-data.guard';
+import { CounterDeactivateGuard } from './guard/counter-deactivate.guard';
+import { CounterTitleResolver } from './resolver/counter-title.resolver';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,18 @@ import { StoreModule } from '@ngrx/store';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: 'counter', component: CounterComponent }]),
+    RouterModule.forChild([
+      {
+        path: 'counter',
+        component: CounterComponent,
+        canActivate: [CounterDataGuard],
+        canDeactivate: [CounterDeactivateGuard],
+        resolve: {
+          title: CounterTitleResolver,
+        },
+        // runGuardsAndResolvers: 'always',
+      },
+    ]),
     StoreModule.forRoot({ counter: counterReducer }),
   ],
 })
